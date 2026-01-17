@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Bonsai-inspired color palette */
+    --background: 40 33% 97%;
+    --foreground: 30 10% 15%;
+
+    --card: 40 25% 95%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 40 33% 97%;
+    --popover-foreground: 30 10% 15%;
+
+    /* Deep forest green - primary brand color */
+    --primary: 145 40% 22%;
+    --primary-foreground: 40 33% 97%;
+
+    /* Warm terracotta - secondary accent */
+    --secondary: 25 45% 55%;
+    --secondary-foreground: 40 33% 97%;
+
+    /* Sage green - soft accent */
+    --accent: 140 25% 75%;
+    --accent-foreground: 30 10% 15%;
+
+    --muted: 40 20% 90%;
+    --muted-foreground: 30 10% 45%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 40 20% 85%;
+    --input: 40 20% 85%;
+    --ring: 145 40% 22%;
+
+    --radius: 0.5rem;
+
+    /* Custom bonsai tokens */
+    --zen-cream: 40 33% 97%;
+    --zen-sand: 35 30% 88%;
+    --forest-deep: 145 40% 22%;
+    --forest-light: 145 30% 35%;
+    --terracotta: 25 45% 55%;
+    --terracotta-light: 25 50% 70%;
+    --moss: 140 25% 75%;
+    --bark: 30 25% 30%;
+    --charcoal: 30 10% 15%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(145 40% 22% / 0.9), hsl(145 30% 35% / 0.8));
+    --gradient-cta: linear-gradient(135deg, hsl(25 45% 55%), hsl(25 50% 45%));
+    --gradient-card: linear-gradient(180deg, hsl(40 33% 97%), hsl(40 25% 95%));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(30 10% 15% / 0.1);
+    --shadow-card: 0 8px 30px -8px hsl(30 10% 15% / 0.15);
+    --shadow-elevated: 0 20px 50px -15px hsl(30 10% 15% / 0.2);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 10% 10%;
+    --foreground: 40 33% 97%;
+
+    --card: 30 10% 12%;
+    --card-foreground: 40 33% 97%;
+
+    --popover: 30 10% 10%;
+    --popover-foreground: 40 33% 97%;
+
+    --primary: 145 35% 45%;
+    --primary-foreground: 30 10% 10%;
+
+    --secondary: 25 40% 50%;
+    --secondary-foreground: 40 33% 97%;
+
+    --accent: 140 20% 30%;
+    --accent-foreground: 40 33% 97%;
+
+    --muted: 30 10% 20%;
+    --muted-foreground: 40 20% 65%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 10% 20%;
+    --input: 30 10% 20%;
+    --ring: 145 35% 45%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium 
+           transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-md font-medium
+           transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-6 py-3 rounded-md font-medium
+           transition-all duration-300 hover:bg-primary hover:text-primary-foreground
+           focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply text-foreground px-6 py-3 rounded-md font-medium
+           transition-all duration-300 hover:bg-muted
+           focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  .card-zen {
+    @apply bg-card rounded-xl p-6 shadow-[var(--shadow-card)]
+           transition-all duration-300 hover:shadow-[var(--shadow-elevated)]
+           hover:-translate-y-1;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 px-4 md:px-8;
+  }
+
+  .container-zen {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .heading-display {
+    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-semibold tracking-tight leading-tight;
+  }
+
+  .heading-section {
+    @apply text-3xl md:text-4xl font-serif font-semibold tracking-tight;
+  }
+
+  .heading-subsection {
+    @apply text-xl md:text-2xl font-serif font-medium;
+  }
+
+  .text-body {
+    @apply text-base md:text-lg text-muted-foreground leading-relaxed;
+  }
+
+  .link-underline {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full 
+           after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 
+           after:bg-primary after:origin-bottom-right after:transition-transform 
+           after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+
+  .badge-zen {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
+           bg-accent/30 text-primary;
+  }
+
+  .badge-indoor {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
+           bg-primary/10 text-primary;
+  }
+
+  .badge-outdoor {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
+           bg-secondary/20 text-secondary;
+  }
+
+  .badge-limited {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
+           bg-destructive/10 text-destructive;
+  }
+
+  .input-zen {
+    @apply w-full px-4 py-3 rounded-md border border-border bg-background
+           text-foreground placeholder:text-muted-foreground
+           focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
+           transition-all duration-200;
+  }
+
+  .overlay-gradient {
+    @apply absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
